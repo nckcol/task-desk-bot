@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/nckcol/task-desk-bot#readme",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "telegraf": "^3.17.5"
   }
 }
