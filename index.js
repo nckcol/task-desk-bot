@@ -15,6 +15,7 @@ const database = require('./database');
 /* middleware */
 bot.use(
   database.middleware({
+    host: process.env.DATABASE_HOST,
     database: process.env.DATABASE_NAME,
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
@@ -27,6 +28,12 @@ bot.start(ctx => {
   return ctx.reply('Welcome!');
 });
 bot.command('help', ctx => ctx.reply('Try send a sticker!'));
+bot.command('show users', ctx => {
+  ctx.db.models.User.findAll()
+    .then(users => {
+      ctx.reply(users)
+    })
+})
 bot.on('inline_query', inlineQueryHandler.getHandler());
 bot.action('CREATE_TASK', ctx => {
   ctx.editMessageText(`@${ctx.from.username} accepted task`);
