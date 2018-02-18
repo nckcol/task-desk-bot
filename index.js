@@ -11,15 +11,11 @@ const InlineQueryHandler = require('./handlers/inline-query-handler');
 const inlineQueryHandler = new InlineQueryHandler();
 
 const database = require('./database');
+const configDatabase = require('./config/database');
 
 /* middleware */
 bot.use(
-  database.middleware({
-    database: process.env.DATABASE_NAME,
-    username: process.env.DATABASE_USERNAME,
-    password: process.env.DATABASE_PASSWORD,
-    port: process.env.DATABASE_PORT
-  })
+  database.middleware(configDatabase[process.env.NODE_ENV || 'development'])
 );
 
 bot.start(ctx => {
