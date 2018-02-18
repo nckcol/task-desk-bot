@@ -1,4 +1,4 @@
-const init = require('/init.js');
+const init = require('./init.js');
 
 module.exports = properties => {
   return async (context, next) => {

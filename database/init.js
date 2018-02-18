@@ -1,9 +1,11 @@
+const Sequelize = require('sequelize');
 const user = require('./models/user');
 const task = require('./models/task');
 const project = require('./models/project');
 
-module.exports = ({ database, username, password, port }) => {
+module.exports = ({ host, database, username, password, port }) => {
   const sequelize = new Sequelize({
+    host,
     database,
     username,
     password,
@@ -22,6 +24,13 @@ module.exports = ({ database, username, password, port }) => {
 
   return {
     sequelize,
+<<<<<<< HEAD
+    models: {
+      User,
+      Task
+    }
+=======
     models: { User, Task, Project }
+>>>>>>> e801206e589e06df9f5f5e65ba5f51d71dd72ee5
   };
 };
